@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
@@ -20,8 +22,10 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @AllArgsConstructor
 public class Client extends Person {
-    private String matricule;
-    private String role;
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String numCarte;
     @OneToMany(mappedBy = "client")
     private Set<RDV> rdvList;
 

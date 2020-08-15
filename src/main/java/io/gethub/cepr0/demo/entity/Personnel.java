@@ -12,14 +12,11 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @AllArgsConstructor
-public class User extends Person {
+public class Personnel extends Person {
 	@Id
 	@GeneratedValue
 	private Long id;
+	private String role;
+	private String matricule;
 
-	private String name;
-
-	public User(String name) {
-		this.name = name;
-	}
 }

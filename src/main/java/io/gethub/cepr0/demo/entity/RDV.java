@@ -37,6 +37,7 @@ public class RDV  extends Auditable {
             name = "service_demander",
             joinColumns = { @JoinColumn(name = "rdv_id") },
             inverseJoinColumns = { @JoinColumn(name = "service_id") }
+
     )
     Set<Service> services = new HashSet<>();
 }

@@ -16,9 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @MappedSuperclass
 public class Person implements Serializable {
-	@Id
-	@GeneratedValue
-	private Long id;
+
 
 	private String name;
 	private String lastName;

@@ -28,6 +28,7 @@ public class Service extends Auditable implements Serializable {
     private String name;
     @Column(length = 1000)
     private String description;
-    @ManyToMany(mappedBy = "services")
-    private Set<RDV> rdvs = new HashSet<>();
+    private String duree;
+    private String price;
+
 }
