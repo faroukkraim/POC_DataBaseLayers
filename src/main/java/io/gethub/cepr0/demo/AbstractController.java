@@ -1,18 +1,21 @@
 package io.gethub.cepr0.demo;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public abstract class AbstractController<T> {
+public abstract class AbstractController<T,D> {
 
 	protected final JpaRepository<T, Long> repo;
+	protected final AbstractService<T, D> service;
 
-	public AbstractController(JpaRepository<T, Long> repo) {
+	public AbstractController(JpaRepository<T, Long> repo, AbstractService<T, D> service) {
 		this.repo = repo;
+		this.service = service;
 	}
 
 	@GetMapping
@@ -46,4 +49,10 @@ public abstract class AbstractController<T> {
 				.map(t -> ResponseEntity.noContent().build())
 				.orElse(ResponseEntity.notFound().build());
 	}
+	@GetMapping("/all")
+	public List<D> getList(){
+		System.out.println(service.getList());
+		return service.getList();
+	}
+
 }
